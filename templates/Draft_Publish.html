@@ -1,0 +1,14 @@
+{%extends 'Home.html'%}
+{%load static%}
+{%block body_block%}
+<link rel="stylesheet" href="{% static "css/Font.css" %}">
+<div class="jumbotron">
+  <h1>Publish {{mypost_detail.title}}?</h1>
+
+      <form class=""  method="post">
+          {%csrf_token%}
+          <input type="submit" class="btn btn-info" name="Publish" value="Publish">
+          <a href="{%url 'mypost' %}" class="btn btn-dark">Cancel</a>
+      </form>
+      </div>
+{%endblock%}

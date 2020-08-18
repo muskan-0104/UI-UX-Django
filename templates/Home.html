@@ -1,0 +1,81 @@
+{%load static%}
+<!DOCTYPE html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "css/header.css" %}">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Grenze&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static "css/Font.css" %}">
+</head>
+
+<body>
+  {%csrf_token%}
+
+    <ul class="nav justify-content-center" id="list" >
+        <li class="nav-item active">
+          <a class="nav-link" href="{%url 'home'%}" >SAVING EARTH</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{%url 'about' %}">About Us <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin">Admin</a>
+        </li>
+        {% if verify %}
+
+        <li class="nav-item dropdown justify-content-end active">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+          User
+          </a>
+
+          <div class="dropdown-menu">
+              <a class="dropdown-item" href="{%url 'mypost'%}">My Posts</a>
+              <a class="dropdown-item" href="{%url 'drafts'%}">Drafts</a>
+              <a class="dropdown-item" href="{%url 'mypost_create'%}">Create Blog</a>
+            <div class="dropdown-divider"></div>
+            <a href="{%url 'LogOut'%}" class="dropdown-item"><button class="btn btn-outline-success" type="submit">LogOut</button></a>
+            </div>
+        </li>
+
+          {%else%}
+          <li class="nav-item active">
+            <a class="nav-link" href="{%url 'signup'%}">Sign Up</a>
+          </li>
+        <li class="nav-item active">
+          <a href="{%url 'LogIn'%}"><button class="btn btn-outline-success" type="submit">LogIn</button></a>
+          {%endif%}
+        </li>
+      </ul>
+{%block body_block%}
+
+<title>Home</title>
+
+<div id="header" style="background: url({% static "image/flower2.jpg" %})">
+  <div id="title" class="container"><h1><strong>SAVING  EARTH</strong></h1></div>
+</div>
+
+<div class="container-sm" >
+  <br><br>
+    <div class="row"  style="margin-left:4rem;">
+    {%for posts in blog_list%}
+      {%if posts.published%}
+
+      <div class="col-sm-11 col-lg-3 card" style="margin-bottom:1rem;border:0;display:inline-block;">
+        <p align="center"><img src="{{posts.post_pic.url}}" class="card-img-top" alt="Some error Occured"></p>
+        <h5><a href="{{posts.id}}">{{posts.title}}</a></h5>
+        <p>{{posts.post|truncatewords:10}}....<a href="{{posts.id}}">Read More</a></p>
+      </div>
+      <div class="col-sm-12 col-lg-1" style="margin:1rem 0rem 1rem 0rem;"></div>
+      {%endif%}
+    {%endfor%}
+      </div>
+
+</div>
+</body>
+{%endblock%}

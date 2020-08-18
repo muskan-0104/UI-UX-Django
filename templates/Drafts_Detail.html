@@ -1,0 +1,27 @@
+{%extends 'Home.html'%}
+{%load static%}
+{%block body_block%}
+<head>
+  <link rel="stylesheet" href="{% static "css/Font.css" %}">
+</head>
+  <body>
+    <div class="card" style="width: inherit">
+      <img src="{{drafts_detail.post_pic.url}}" class="card-img-top" alt="..." >
+      <div class="card-body">
+        <h5 class="card-title">{{drafts_detail.title}}</h5>
+        <p>Published On:{{drafts_detail.date}}</p>
+        <p class="card-text">{{drafts_detail.post}}</p>
+        <br>
+
+        <form  method="post">
+          {%csrf_token%}
+          <p><a class="btn btn-warning" href="{%url 'mypost_update' pk=drafts_detail.pk%}">Update</a>
+            <a class="btn btn-info" href="{%url 'mydraft_update' pk=drafts_detail.pk%}">Publish</a>
+            <a class="btn btn-danger" href="{%url 'mypost_delete' pk=drafts_detail.pk%}">Delete</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
+
+{%endblock%}

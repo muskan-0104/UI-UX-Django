@@ -1,0 +1,25 @@
+{%extends 'Home.html'%}
+{%load static%}
+<!DOCTYPE html>
+{%block body_block%}
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="{% static "css/Font.css" %}">
+    <meta charset="utf-8">
+    <title>Create Post</title>
+  </head>
+  <body style="background-image: url({%static '/image/flower1.jpg'%});">
+
+              <form class="form-group update_form"  method="post" enctype="multipart/form-data">
+                <h5 style="text-align:center">Create Post</h5>
+                <br>
+                  {%csrf_token%}
+                  {{form.as_p}}
+                  <br>
+                  <input type="submit" class="btn btn-primary" name="Publish" value="Publish">
+                  <input type="submit" class="btn btn-dark" name="Draft" value="Save As Draft">
+
+              </form>
+  </body>
+</html>
+{%endblock%}

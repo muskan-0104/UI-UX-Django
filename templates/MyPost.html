@@ -1,0 +1,32 @@
+{%extends 'Home.html'%}
+{%load static%}
+<!DOCTYPE html>
+{%block body_block%}
+<head>
+  <title>My Post</title>
+  <link rel="stylesheet" href="{% static "css/Font.css" %}">
+</head>
+<body>
+
+  <div class="jumbotron">
+    <div class="blog_sep">
+      <h1>My Posts</h1>
+      <hr>
+      <br>
+      {%for post in email%}
+      {%if post.published%}
+        <h5><a href="{{post.id}}">{{post.title}}</a></h5>
+      <p>{{post.post|truncatewords:30}}</p>
+      <hr>
+      <br>
+      {%endif%}
+      {%endfor%}
+      <a class="btn btn-primary" href="{%url 'mypost_create'%}">Create Blog</a>
+
+
+    </div>
+  </div>
+
+
+</body>
+{%endblock%}

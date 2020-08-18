@@ -1,0 +1,28 @@
+{% extends 'Home.html' %}
+{%load static %}
+{% block body_block %}
+<html lang="en" dir="ltr">
+  <head>
+    <title>Sign In</title>
+    <link rel="stylesheet" href="{% static "css/Font.css" %}">
+    </head>
+
+  <body style="background-image:url({% static "image/flower1.jpg" %})">
+
+      <form method="POST" class="form-group signup_form">
+          <h5 style="text-align:center">Sign In </h5>
+          {{form.as_p}}
+          {%csrf_token%}
+          <label for="email">Email:</label>
+          <input type="email" name="email" placeholder="Email" class="form-control">
+
+          <label for="password">Password:</label>
+          <input type="password" name="password" class="form-control">
+          <br>
+          <button type="submit" class="btn btn-primary" style="width:100%" value="Login">Submit</button>
+          <a href="#">Forgot Password!</a>
+      </form>
+
+  </body>
+</html>
+{% endblock %}

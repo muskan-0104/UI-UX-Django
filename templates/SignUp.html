@@ -1,0 +1,23 @@
+{%extends 'Home.html'%}
+{%load static%}
+{%block body_block%}
+<head>
+  <link rel="stylesheet" href="{% static "css/Font.css" %}">
+</head>
+<body style="background-image: url({%static '/image/flower1.jpg'%});">
+
+  <form  class="form-group signup_form" method="post" enctype="multipart/form-data">
+      <h5 style="text-align:center">Sign Up </h5>
+       <p style="text-align:center">Join Our Community!</p>
+       <br>
+              {%csrf_token%}
+              {{form.as_p}}
+          <br>
+          <input type="submit" class="btn btn-primary" name="" value="Submit">
+  </form>
+
+
+{%endblock%}
+
+
+</body>

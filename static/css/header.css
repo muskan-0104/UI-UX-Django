@@ -1,0 +1,23 @@
+#header{
+  width: 100%;
+  height:auto;
+  text-align:center;
+  padding: 5em;
+}
+#title{
+  width: 40%;
+  font-family: 'Dancing Script', cursive;
+  color: black;
+  background-color: white;
+  padding: 3em 0em;
+  border:double;
+}
+#list{
+  padding: 0.5em;
+  font-size: 1em;
+  background-color: white;
+}
+
+h5{
+  color: green;
+}

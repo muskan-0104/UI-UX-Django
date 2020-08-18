@@ -1,0 +1,21 @@
+{%extends 'Home.html'%}
+{%load static%}
+{%block body_block%}
+<head>
+  <title>Update Post</title>
+  <link rel="stylesheet" href="{% static "css/Font.css" %}">
+</head>
+<body style="background-image: url({%static '/image/flower1.jpg'%});">
+
+
+        <form class="form-group update_form"  method="post">
+          <h5 style="text-align:center">Update Post</h5>
+          <br>
+            {%csrf_token%}
+            {{form.as_p}}
+            <br>
+            <input type="submit" class="btn btn-primary btn-lg" name="P_Update" value="Submit">
+        </form>
+</body>
+
+{%endblock%}

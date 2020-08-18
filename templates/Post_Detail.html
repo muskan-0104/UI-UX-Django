@@ -1,0 +1,64 @@
+{%extends 'Home.html'%}
+{%load static%}
+{%block body_block%}
+<head>
+  <link rel="stylesheet" href="{% static "css/Font.css" %}">
+  <link rel="stylesheet" href="{% static "css/PostView.css" %}">
+</head>
+  <body style="background:#ECF0F1">
+    <div class="container-sm" style="margin-left:5%;margin-right:5%;">
+      <div class="row">
+        <div class="card post col-lg-9 col-sm-12" style="width:inherit;border:0">
+          <div class="card-body">
+            <p id="date" align="center"><strong>{{blog_detail.published_date}}</strong></p>
+            <h5 class="card-title" align="center">{{blog_detail.title}}</h5>
+            <p align="center">{{blog_detail.Blogger.username}}</p>
+          </div>
+          <img src="{{blog_detail.post_pic.url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">{{blog_detail.post}}</p>
+          </div>
+        </div>
+
+        <div class="card user col-lg-3 col-sm-12">
+            <img src="{{blog_detail.Blogger.profile_pic.url}}" class="img-thumbnail" alt="..." >
+              <p id="card-title" align="center"><strong>{{blog_detail.Blogger.username}}</strong></p>
+              <p align="center">{{blog_detail.Blogger.about}}</p>
+
+            <hr>
+            <div class="card">
+              <p align="center" class="card-header"><strong>Contact</strong></p>
+              <p align="center">{{blog_detail.Blogger.email}}</p>
+            </div>
+        </div>
+
+
+        <div class="card mb-3 col-12 user-data">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="{{blog_detail.Blogger.profile_pic.url}}" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><strong>{{blog_detail.Blogger.username}}</strong></h5>
+                  <p class="card-text">{{blog_detail.Blogger.about}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card col comment">
+          <h5 class="card-header" align="center"><strong>Comments</strong></h5>
+          <div class="card-body">
+            <p align="center"></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </body>
+
+
+{%endblock%}
